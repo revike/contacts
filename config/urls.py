@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='admin/', permanent=False), name='index'),
     path('api/user/', include('users.urls', namespace='user')),
+    path('api/contact/', include('contact.urls', namespace='contact')),
 ]
 
 if settings.DEBUG:

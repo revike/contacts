@@ -19,7 +19,8 @@ class ContactAdmin(admin.ModelAdmin):
     """Contact admin panel"""
     list_display = ['id', 'first_name', 'last_name', 'phone', 'email', 'is_active', 'is_active_actions']
     list_display_links = list_display
-    search_fields = ['first_name', 'last_name', 'contact_data__email']
+    search_fields = ['first_name', 'last_name', 'contact_data__email', 'author__email']
+    list_filter = ['author__email']
 
     def get_inlines(self, request, obj):
         if obj:
