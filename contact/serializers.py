@@ -10,3 +10,10 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('id', 'first_name', 'last_name', 'phone', 'created', 'updated', 'email',)
+
+    def update(self, instance, validated_data):
+        email = validated_data.get('get_email')
+        if email:
+            instance.contact_data.email = email
+            instance.contact_data.save()
+        return super().update(instance, validated_data)

@@ -19,3 +19,13 @@ class ContactListApiView(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return Contact.objects.filter(author=user, is_active=True)
+
+
+class ContactDetailApiView(generics.RetrieveAPIView, generics.UpdateAPIView):
+    """Contact detail"""
+    permission_classes = [IsAuthenticated]
+    serializer_class = ContactSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Contact.objects.filter(author=user, is_active=True)
