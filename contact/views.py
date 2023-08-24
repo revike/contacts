@@ -29,3 +29,16 @@ class ContactDetailApiView(generics.RetrieveAPIView, generics.UpdateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Contact.objects.filter(author=user, is_active=True)
+
+
+class ContactDeleteApiView(generics.DestroyAPIView):
+    """Contact delete"""
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Contact.objects.filter(author=user, is_active=True)
+
+    def perform_destroy(self, instance):
+        instance.is_active = False
+        instance.save()
