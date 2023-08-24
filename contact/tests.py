@@ -42,3 +42,11 @@ class TestContact(BaseTestCase):
         self.assertNotEqual(self.contact.contact_data.email, data['email'])
         self.assertEqual(response['first_name'], data['first_name'])
         self.assertNotEqual(self.contact.first_name, data['first_name'])
+
+    def test_contact_delete(self):
+        """Test contact delete"""
+        url = reverse('contact:delete', kwargs={'pk': self.contact.id})
+        self.assertEqual(self.contact.is_active, True)
+        self._make_delete(url, self.user.email)
+        contact = Contact.objects.get(id=self.contact.id)
+        self.assertEqual(contact.is_active, False)
