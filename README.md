@@ -100,3 +100,8 @@
 ##### Запуск
 
 ```docker-compose up --build```
+
+##### API документация
+ 
+[documentation](http://127.0.0.1:8000/docs)
+
