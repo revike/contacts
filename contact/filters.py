@@ -17,8 +17,7 @@ class ContactFilter(FilterSet):
             value_list = value.split()
             for obj in value_list:
                 filter_list = filter_list | Q(first_name__icontains=obj) | Q(last_name__icontains=obj)
-            return queryset.filter(
-                Q(first_name__icontains=value) | Q(last_name__icontains=value) | filter_list).distinct()
+            return queryset.filter(filter_list).distinct()
         return queryset
 
     @classmethod
