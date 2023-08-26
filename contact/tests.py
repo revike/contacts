@@ -13,7 +13,7 @@ class TestContact(BaseTestCase):
             'author': self.user,
             'first_name': 'first',
             'last_name': 'last',
-            'phone': '+72957288980'
+            'phone': '+74957288980'
         }
         self.count_numbers = 10
         for _ in range(self.count_numbers):

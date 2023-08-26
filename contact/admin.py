@@ -62,5 +62,3 @@ class ContactAdmin(admin.ModelAdmin):
         review.is_active = False
         review.save()
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
